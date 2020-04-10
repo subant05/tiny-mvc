@@ -1,6 +1,6 @@
-# Router Component
+# Tiny MVC
 
-The router component allows you to create small MVC single page applications. 
+The Tiny MVC allows you to create small MVC single page applications. 
 
 ## router()
 
