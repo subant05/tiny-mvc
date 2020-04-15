@@ -8726,32 +8726,6 @@ function router(routes, root, config) {
     root: root
   }, root, config);
 }
-/** Example:
-   var state = router({
-      "/hello":{
-              service(){
-                  return new Promise((resolve,reject)=>{
-                      setTimeout(resolve({greetings:"Salutations"}), 1000)
-                  })
-              }
-              , controller(data){
-                  console.log("hello: ", data)
-                  document.querySelector("#content").innerHTML = data.greetings
-              }
-          }
-      , "/bye":{
-              service(){
-                  return new Promise((resolve,reject)=>{
-                      setTimeout(resolve({farewell:"Adios"}), 1000)
-                  })
-              }
-              , controller(data){
-                  console.log("bye: ", data)
-                  document.querySelector("#content").innerHTML = data.farewell
-              }
-      }
-  })
-*/
 },{"./router.Utils":"src/router.Utils.js","./router.Controller":"src/router.Controller.js"}],"tiny-mvc.js":[function(require,module,exports) {
 
 "use strict";

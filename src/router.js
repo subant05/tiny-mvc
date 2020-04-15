@@ -178,35 +178,8 @@ function router(routes,root, config){
     if(typeof root !== 'string'){
         root = "/"
     }
-    
+
     new Router(routes, {root}, root, config)
 }
-
-/** Example:
-   var state = router({
-      "/hello":{
-              service(){
-                  return new Promise((resolve,reject)=>{
-                      setTimeout(resolve({greetings:"Salutations"}), 1000)
-                  })
-              }
-              , controller(data){
-                  console.log("hello: ", data)
-                  document.querySelector("#content").innerHTML = data.greetings
-              }
-          }
-      , "/bye":{
-              service(){
-                  return new Promise((resolve,reject)=>{
-                      setTimeout(resolve({farewell:"Adios"}), 1000)
-                  })
-              }
-              , controller(data){
-                  console.log("bye: ", data)
-                  document.querySelector("#content").innerHTML = data.farewell
-              }
-      }
-  })
-*/
 
 export { router, RouterController }
