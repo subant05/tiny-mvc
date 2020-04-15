@@ -108,7 +108,7 @@ Below is an example of a controller:
 
             this.onmounted(()=>{
                 document
-                .getElementByTagName("ul")[0]
+                .getElementsByTagName("ul")[0]
                 .addEventListener(
                     "click"
                     , e=>this.listHandler(e)
@@ -147,4 +147,11 @@ async function getAllUsersService (){
         })
     })
 }
+```
+
+
+## Build
+To build Tiny-MVC, use parcel bundler
+```
+parcel index.html
 ```

@@ -34,5 +34,9 @@
   "bugs": {
     "url": "https://github.com/subant05/tiny-mvc/issues"
   },
-  "homepage": "https://github.com/subant05/tiny-mvc#readme"
+  "homepage": "https://github.com/subant05/tiny-mvc#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "parcel-bundler": "^1.12.4"
+  }
 }
