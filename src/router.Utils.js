@@ -27,10 +27,7 @@ const  _ieGetScopedProperty =(function R(currentScope, path, value) {
 })
 
 function templateTranspiler(template,scope ){
-    return template.replace(/\$\{(.+?)\}/g
-        ,(currentMatch, path)=>{
-            return _ieGetScopedProperty(scope, path)
-        })
+    return new Function('scope', 'return `'+ template  +'`;' )(scope)
 }
 
 function _bindOnmountedEvents(){

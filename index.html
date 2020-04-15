@@ -2,6 +2,103 @@
 <body>
   <div id="content"></div>
   <script src="./tiny-mvc.js"></script>
-  <script src="./app.js"></script>
+  <script>
+        // Create a Home Page service that will load prior to HomeController
+        function getHomeInfo(){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    resolve({msg: 'Welcome to the Home Page'})
+                },1000)
+            })
+        }
+
+        // Create a Home Page service that will load prior to AboutController
+        function getAboutInfo(){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    resolve({msg: 'Hi. I am Anthony Crawford. JavaScript Developer, Father, Husband & Trekie'})
+                },1000)
+            })
+        }
+
+        // This controller is used for the Home Page and will provide scope to the associated template
+        class HomeController extends tinyMVC.RouterController{
+            constructor(data={}, state={}){
+                super(...arguments)
+
+                this.greeting = data.msg
+
+                this.onmounted(()=>{
+                    document
+                    .getElementsByTagName("h1")[0]
+                    .addEventListener(
+                        "click"
+                        , e=>this.listHandler(e)
+                        , false
+                    )
+                })
+
+                this.onunmounted(()=>{
+                    this.state["/home"].didUserLeave = "User Left The Home Page."
+                    alert("Goodbye")
+                })
+            }
+
+            listHandler(e){
+                alert('Yes. I already welcomed you')
+            }
+        }
+
+        // This controller is used for the About Page and will provide scope to the associated template
+        class AboutController extends tinyMVC.RouterController{
+            constructor(data={}, state={}){
+                super(...arguments)
+
+                this.me = data.msg
+
+                this.onmounted(()=>{
+                    document
+                    .getElementsByTagName("h1")[0]
+                    .addEventListener(
+                        "click"
+                        , e=>this.listHandler(e)
+                        , false
+                    )
+                })
+
+                this.onunmounted(()=>{
+                    this.state["/home"].didUserLeave = "User Left The Home Page."
+                    alert("Goodbye")
+                })
+            }
+
+            listHandler(e){
+                alert('What else would you like to know about me?')
+            }
+        }
+
+
+        // Here we setup the router and provide service, template and controller info for each route
+        tinyMVC.router({
+            "/":{
+                template: "/templates/home.html"
+                , service: getHomeInfo
+                , controller: HomeController
+            }
+            , "/about":{
+                template: "/templates/about.html"
+                , service: getAboutInfo
+                , controller: AboutController
+            }
+        },null,
+            // Below we provide a customer loader as the framework doesn't have one out of the box
+            {
+                loader(){
+                    document.querySelector("#content").innerHTML = "Loading..."
+                }
+            }
+        )
+
+  </script>
 </body>
 </html>

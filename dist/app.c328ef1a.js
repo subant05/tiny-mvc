@@ -146,7 +146,7 @@ function getHomeInfo() {
       resolve({
         msg: 'Welcome to the Home Page'
       });
-    }, 500);
+    }, 1000);
   });
 }
 
@@ -156,7 +156,7 @@ function getAboutInfo() {
       resolve({
         msg: 'Hi. I am Anthony Crawford. JavaScript Developer, Father, Husband & Trekie'
       });
-    }, 500);
+    }, 1000);
   });
 }
 
@@ -251,6 +251,10 @@ tinyMVC.router({
     service: getAboutInfo,
     controller: AboutController
   }
+}, null, {
+  loader: function loader() {
+    document.querySelector("#content").innerHTML = "Loading...";
+  }
 });
 },{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -280,7 +284,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52857" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55207" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

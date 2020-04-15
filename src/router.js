@@ -6,8 +6,8 @@ class Router {
         this.routes = routes;
         this.state = state;
         this.root =  root;
-        this.saveState = config.saveState;
         this.config = config
+        this.saveState = config.saveState || true;
         this.addClickHandler()
         this.addPopstateHandler()
         this.pageLoadHander(root)
@@ -174,8 +174,12 @@ class Router {
     }
 }
 
-function router(routes,root = "/"){
-    new Router(routes, {root}, root)
+function router(routes,root, config){
+    if(typeof root !== 'string'){
+        root = "/"
+    }
+    
+    new Router(routes, {root}, root, config)
 }
 
 /** Example:

@@ -8175,9 +8175,7 @@ var _ieGetScopedProperty = function R(currentScope, path, value) {
 };
 
 function templateTranspiler(template, scope) {
-  return template.replace(/\$\{(.+?)\}/g, function (currentMatch, path) {
-    return _ieGetScopedProperty(scope, path);
-  });
+  return new Function('scope', 'return `' + template + '`;')(scope);
 }
 
 function _bindOnmountedEvents() {
@@ -8395,8 +8393,8 @@ var Router = /*#__PURE__*/function () {
     this.routes = routes;
     this.state = state;
     this.root = root;
-    this.saveState = config.saveState;
     this.config = config;
+    this.saveState = config.saveState || true;
     this.addClickHandler();
     this.addPopstateHandler();
     this.pageLoadHander(root);
@@ -8719,11 +8717,14 @@ var Router = /*#__PURE__*/function () {
   return Router;
 }();
 
-function router(routes) {
-  var root = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "/";
+function router(routes, root, config) {
+  if (typeof root !== 'string') {
+    root = "/";
+  }
+
   new Router(routes, {
     root: root
-  }, root);
+  }, root, config);
 }
 /** Example:
    var state = router({
@@ -8792,7 +8793,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52857" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55207" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
