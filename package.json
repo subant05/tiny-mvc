@@ -1,0 +1,38 @@
+{
+  "name": "tiny-mvc",
+  "version": "1.0.0",
+  "description": "Small MVC framework",
+  "main": "router.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subant05/tiny-mvc.git"
+  },
+  "keywords": [
+    "small",
+    "router",
+    "for",
+    "small",
+    "project",
+    "or",
+    "server",
+    "side",
+    "apps",
+    "that",
+    "don't",
+    "want",
+    "anything",
+    "heavy",
+    "for",
+    "light",
+    "routing"
+  ],
+  "author": "Anthony Crawford",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subant05/tiny-mvc/issues"
+  },
+  "homepage": "https://github.com/subant05/tiny-mvc#readme"
+}
